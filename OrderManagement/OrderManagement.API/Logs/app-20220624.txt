@@ -524,3 +524,26 @@ WHERE [p].[IsDeleted] = CAST(0 AS bit)" (0723d8ff)
 2022-06-24T14:02:01.5347357+08:00 0HMILKS61G1LB:00000007 [INF] 
 24/06/2022 14:02:01- Request Id: 0HMILKS61G1LB:00000007 (c045253d)
 2022-06-24T14:02:01.9000610+08:00 0HMILKS61G1LB:00000007 [INF] Request finished HTTP/2 GET https://localhost:7212/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 371.5390ms (791a596a)
+2022-06-24T14:27:27.9291511+08:00  [INF] Entity Framework Core "6.0.6" initialized '"OrderManagementContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer":"6.0.6"' with options: "None" (d2805559)
+2022-06-24T14:27:44.3192344+08:00  [INF] Entity Framework Core "6.0.6" initialized '"OrderManagementContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer":"6.0.6"' with options: "None" (d2805559)
+2022-06-24T14:29:09.0303212+08:00  [INF] Entity Framework Core "6.0.6" initialized '"OrderManagementContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer":"6.0.6"' with options: "None" (d2805559)
+2022-06-24T14:29:09.3244917+08:00  [INF] Executed DbCommand ("16"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1" (0723d8ff)
+2022-06-24T14:29:09.3513730+08:00  [INF] Executed DbCommand ("16"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');" (0723d8ff)
+2022-06-24T14:29:09.3546391+08:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1" (0723d8ff)
+2022-06-24T14:29:09.3554990+08:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');" (0723d8ff)
+2022-06-24T14:29:09.3737683+08:00  [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];" (0723d8ff)
+2022-06-24T14:29:09.4014740+08:00  [INF] Applying migration '"20220624062728_Initial_002"'. (0e2ac64d)
+2022-06-24T14:29:09.4442291+08:00  [INF] Executed DbCommand ("8"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE UNIQUE INDEX [IX_Person_Email] ON [User].[Person] ([Email]);" (0723d8ff)
+2022-06-24T14:29:09.4477142+08:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE UNIQUE INDEX [IX_Order_OrderNo] ON [Order].[Order] ([OrderNo]);" (0723d8ff)
+2022-06-24T14:29:09.4494237+08:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20220624062728_Initial_002', N'6.0.6');" (0723d8ff)

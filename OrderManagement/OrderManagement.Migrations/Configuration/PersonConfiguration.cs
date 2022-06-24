@@ -16,6 +16,7 @@ namespace OrderManagement.Migrations.Configuration
             builder.ToTable("Person", "User");
             builder.Property(x => x.Name).HasMaxLength(150).IsRequired(true);
             builder.Property(x => x.Email).HasMaxLength(100).IsRequired(true);
+            builder.HasIndex(x => new { x.Email }).IsUnique(true);
             base.Configure(builder);
         }
     }

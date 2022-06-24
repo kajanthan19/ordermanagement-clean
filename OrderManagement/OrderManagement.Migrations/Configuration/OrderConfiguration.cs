@@ -20,7 +20,7 @@ namespace OrderManagement.Migrations.Configuration
             builder.Property(x => x.Total).HasColumnType("decimal(10,2)").IsRequired(true);
             builder.Property(x => x.Price).HasColumnType("decimal(10,2)").IsRequired(true);
             builder.Property(x => x.TotalPrice).HasColumnType("decimal(10,2)").IsRequired(true);
-
+            builder.HasIndex(x => new { x.OrderNo }).IsUnique(true);
             base.Configure(builder);
         }
     }
