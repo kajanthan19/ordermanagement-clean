@@ -1,0 +1,54 @@
+<div class="row">
+    <div class="col-md-6">
+      <form class="row g-3" [formGroup]="onOrderSearchform" (ngSubmit)="onSubmit(onOrderSearchform.value)">
+        <div class="col-auto">
+          <label for="selectedperson" class="visually-hidden">Email</label>
+          <select class="form-select" formControlName="email" (change)="onChangeEmail($event)">
+            <option [value]="''">Select the Person</option>
+            <option  *ngFor="let person of personlist"  [value]="person.email">{{person.name}}</option>
+        </select>
+        <div *ngIf="onOrderSearchform.controls['email'].hasError('email') && (onOrderSearchform.controls['email'].touched || !onOrderSearchform.controls['email'].pristine)"
+            class="error pt-1  " translate>
+            Please select the Person
+        </div>
+        </div>
+        <div class="col-auto">
+          <button type="submit" class="btn btn-primary mb-3"><i class="bi bi-search"></i> Search</button>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-6">
+        <button type="button" class="btn btn-primary float-end" (click)="onOpenModal()"><i class="bi bi-plus-circle-fill"></i> Order</button>
+    </div>
+</div>
+
+<div class="row mt-2">
+    <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">Order No</th>
+            <th scope="col">Order Date</th>
+            <th scope="col">Product Name</th>
+            <th scope="col">Total</th>
+            <th scope="col">Price</th>
+            <th scope="col">Total Price</th>
+            <th scope="col" style="width: 120px;">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of orderList; index as i;">
+            <th scope="row">{{order.orderNo}}</th>
+            <td>{{order.orderDate | date: 'yyyy-mm-dd'}}</td>
+            <td>{{order.productName}}</td>
+            <td>{{order.total}}</td>
+            <td>{{order.price}}</td>
+            <td>{{order.totalPrice}}</td>
+            <td>
+              <button type="button" class="btn btn-primary me-2" (click)="onEditRow(order)"><i class="bi bi-pencil"></i></button>
+              <button type="button" class="btn btn-danger" (click)="onDeleteRow(order, i)"><i class="bi bi-trash3"></i></button>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+</div>

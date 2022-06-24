@@ -1,0 +1,15 @@
+/OrderManagement/OrderManagement.API/obj
+/OrderManagement/OrderManagement.API/bin
+/OrderManagement/OrderManagement.API.UnitTests/bin
+/OrderManagement/OrderManagement.API.UnitTests/obj
+/OrderManagement/OrderManagement.Core/obj
+/OrderManagement/OrderManagement.Core/bin
+/OrderManagement/OrderManagement.Infrastructure/obj
+/OrderManagement/OrderManagement.Infrastructure/bin
+/OrderManagement/OrderManagement.Migrations/obj
+/OrderManagement/OrderManagement.Migrations/bin
+/OrderManagement/OrderManagement.Model/obj
+/OrderManagement/OrderManagement.Model/bin
+/OrderManagementFrontend/.angular
+/OrderManagementFrontend/.vscode
+/OrderManagement/.vs

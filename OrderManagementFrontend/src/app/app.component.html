@@ -1,0 +1,35 @@
+<div class="d-flex" id="wrapper">
+
+  <!-- Sidebar -->
+  <div class="bg-light border-right" id="sidebar-wrapper"  [ngClass]="status ? 'hide' : 'show'">
+    <div class="sidebar-heading">Order Management </div>
+    <div class="list-group list-group-flush">
+      <a [routerLink] = "'/order'" class="list-group-item list-group-item-action bg-light">Orders</a>
+      <a [routerLink] = "'/product-item'" class="list-group-item list-group-item-action bg-light">Product Items</a>
+      <a [routerLink] = "'/person'" class="list-group-item list-group-item-action bg-light">Persons</a>
+    </div>
+  </div>
+  <!-- /#sidebar-wrapper -->
+
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+     
+      <div class="container-fluid">
+        <button class="btn btn-primary" (click)="clickEvent()"><i class="bi bi-list"></i></button>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        
+      </div>
+    </nav>
+
+    <div class="container-fluid p-5">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <!-- /#page-content-wrapper -->
+
+</div>
+<!-- /#wrapper -->

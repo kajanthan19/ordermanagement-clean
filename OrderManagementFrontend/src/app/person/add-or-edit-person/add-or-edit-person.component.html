@@ -1,0 +1,44 @@
+<div>
+    <div class="modal-content ">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left"><span *ngIf="isEdit;else add">Update</span> <ng-template #add>Add</ng-template> Person</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="cancel(false)">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form [formGroup]="personform" autocomplete="off" (ngSubmit)="onSubmit(personform.value)" >
+        <div class="modal-body">
+          <div class="container">
+            <input *ngIf="isEdit" type="hidden" formControlName="id">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                    <label for="name"> Name <span class="text-danger">*</span> </label>
+                    <input type="text" class="form-control input-small-4" id="callFlow" formControlName="name"  placeholder="Enter the name"  >
+                  <div *ngIf="personform.controls['name'].hasError('required') && (personform.controls['name'].touched || !personform.controls['name'].pristine)" class="error pt-1  " translate>
+                    Please enter the Name
+                  </div>
+                  </div>
+              </div>
+
+              <div class="col-md-12">
+                <div class="form-group">
+                    <label for="email"> Email <span class="text-danger">*</span> </label>
+                    <input type="text" class="form-control input-small-4" id="callFlow" formControlName="email"  placeholder="Enter the Email"  >
+                  <div *ngIf="personform.controls['email'].hasError('required') && (personform.controls['email'].touched || !personform.controls['email'].pristine)" class="error pt-1  " translate>
+                    Please enter the Email
+                  </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn  btn-secondary" data-dismiss="modal" (click)="cancel(false)">Cancel</button>
+          <button type="submit" class="btn  btn-primary pr-4 pl-4" *ngIf="!isEdit" [disabled]="!personform.valid">Submit</button>
+          <button type="submit" class="btn  btn-primary pr-4 pl-4" *ngIf="isEdit" [disabled]="!personform.valid">Update</button>
+        </div>
+      </form>
+  
+    </div>
+  </div>

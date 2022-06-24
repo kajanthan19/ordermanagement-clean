@@ -1,0 +1,47 @@
+<div>
+    <div class="modal-content ">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left"><span *ngIf="isEdit;else add">Update</span> <ng-template #add>Add</ng-template> Product Item</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="cancel(false)">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form [formGroup]="productitemform" autocomplete="off" (ngSubmit)="onSubmit(productitemform.value)" >
+        <div class="modal-body">
+          <div class="container">
+            <input *ngIf="isEdit" type="hidden" formControlName="id">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                    <label for="name">Product Name <span class="text-danger">*</span> </label>
+                    <input type="text" class="form-control input-small-4" id="name" formControlName="name"  placeholder="Enter the Product Name"  >
+                  <div *ngIf="productitemform.controls['name'].hasError('required') && (productitemform.controls['name'].touched || !productitemform.controls['name'].pristine)" class="error pt-1  " translate>
+                    Please enter the Name
+                  </div>
+                  </div>
+              </div>
+
+              <div class="col-md-12">
+                <div class="form-group">
+                    <label for="description"> Description <span class="text-danger">*</span> </label>
+                    <input type="text" class="form-control input-small-4" id="description" formControlName="description"  placeholder="Enter the Description">
+                  </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                    <label for="categories"> Categories <span class="text-danger">*</span> </label>
+                    <input type="text" class="form-control input-small-4" id="categories" formControlName="categories"  placeholder="Enter the Categories">
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn  btn-secondary" data-dismiss="modal" (click)="cancel(false)">Cancel</button>
+          <button type="submit" class="btn  btn-primary pr-4 pl-4" *ngIf="!isEdit" [disabled]="!productitemform.valid">Submit</button>
+          <button type="submit" class="btn  btn-primary pr-4 pl-4" *ngIf="isEdit" [disabled]="!productitemform.valid">Update</button>
+        </div>
+      </form>
+  
+    </div>
+  </div>

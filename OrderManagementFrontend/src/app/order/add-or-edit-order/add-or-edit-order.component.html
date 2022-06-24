@@ -1,0 +1,118 @@
+<div>
+    <div class="modal-content ">
+        <div class="modal-header">
+            <h4 class="modal-title pull-left"><span *ngIf="isEdit;else add">Update</span>
+                <ng-template #add>New </ng-template> Order
+            </h4>
+            <button type="button" class="close pull-right" aria-label="Close" (click)="cancel(false)">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <form [formGroup]="orderform" autocomplete="off" (ngSubmit)="onSubmit(orderform.value)">
+            <div class="modal-body">
+                <div class="container">
+                    <input *ngIf="isEdit" type="hidden" formControlName="id">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="orderNo"> Order No <span class="text-danger">*</span> </label>
+                                <input type="text" class="form-control input-small-4" id="orderNo"
+                                    formControlName="orderNo" placeholder="Enter the Order No">
+                                <div *ngIf="orderform.controls['orderNo'].hasError('required') && (orderform.controls['orderNo'].touched || !orderform.controls['orderNo'].pristine)"
+                                    class="error pt-1  " translate>
+                                    Please enter the Order No
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="oderNo"> Order Date <span class="text-danger">*</span> </label>
+                                <input class="form-control"
+                                    #datepickerYMD="bsDatepicker"
+                                    bsDatepicker
+                                    formControlName="orderDate"
+                                    [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" [maxDate]="maxDate" placeholder="Select the date">
+                                <div *ngIf="orderform.controls['orderDate'].hasError('required') && (orderform.controls['orderDate'].touched || !orderform.controls['orderDate'].pristine)"
+                                    class="error pt-1  " translate>
+                                    Please enter the Order No
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="name">Product Name <span class="text-danger">*</span> </label>
+                                <select class="form-select" aria-label="Default select example"
+                                    formControlName="productName">
+                                    <option [value]="''">Select the Product Name</option>
+                                    <option *ngFor="let product of productItemlist"  [value]="product.name">{{product.name}}</option>
+                                </select>
+                                <div *ngIf="orderform.controls['productName'].hasError('required') && (orderform.controls['productName'].touched || !orderform.controls['productName'].pristine)"
+                                    class="error pt-1  " translate>
+                                    Please select the product Name
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="total"> Total <span class="text-danger">*</span> </label>
+                                <input type="number" class="form-control input-small-4" id="total" formControlName="total"  placeholder="Enter the Total"  (ngModelChange)="onChangeTotal($event)">
+                              <div *ngIf="orderform.controls['total'].hasError('required') && (orderform.controls['total'].touched || !orderform.controls['total'].pristine)" class="error pt-1  " translate>
+                                Please enter the Name
+                              </div>
+                              </div>
+                          </div>
+
+                          <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="price"> Price <span class="text-danger">*</span> </label>
+                                <input type="text" class="form-control input-small-4" id="price" formControlName="price"  placeholder="Enter the Price"  (ngModelChange)="onChangePrice($event)">
+                              <div *ngIf="orderform.controls['price'].hasError('required') && (orderform.controls['price'].touched || !orderform.controls['price'].pristine)" class="error pt-1  " translate>
+                                Please enter the Price
+                              </div>
+                              </div>
+                          </div>
+
+                          <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="totalPrice"> Total Price <span class="text-danger">*</span> </label>
+                                <input type="number" class="form-control input-small-4" id="totalPrice" formControlName="totalPrice"  placeholder="Enter the Total Price"  >
+                              <div *ngIf="orderform.controls['totalPrice'].hasError('required') && (orderform.controls['totalPrice'].touched || !orderform.controls['totalPrice'].pristine)" class="error pt-1  " translate>
+                                Please enter the Total Price
+                              </div>
+                              </div>
+                          </div>
+
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="name">Created By <span class="text-danger">*</span> </label>
+                                <select class="form-select" formControlName="createdBy">
+                                    <option [value]="''">Select the Person</option>
+                                    <option  *ngFor="let person of personlist"  [value]="person.email">{{person.name}}</option>
+                                </select>
+                                <div *ngIf="orderform.controls['createdBy'].hasError('required') && (orderform.controls['createdBy'].touched || !orderform.controls['createdBy'].pristine)"
+                                    class="error pt-1  " translate>
+                                    Please select the Person
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn  btn-secondary" data-dismiss="modal"
+                    (click)="cancel(false)">Cancel</button>
+                <button type="submit" class="btn  btn-primary pr-4 pl-4" *ngIf="!isEdit"
+                    >Submit</button>
+                <button type="submit" class="btn  btn-primary pr-4 pl-4" *ngIf="isEdit"
+                    [disabled]="!orderform.valid">Update</button>
+            </div>
+        </form>
+
+    </div>
+</div>
